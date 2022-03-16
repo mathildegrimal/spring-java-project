@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Editeurs</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/resources/css/main.css}" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
+
+</head>
+    <body>
+        <div class="table-container">
+            <div class="table-header">
+                <h1>Liste des éditeurs</h1>
+                <button class="link-editeur" onclick="window.location='/editeur'">Ajouter un éditeur</button>
+            </div>
+            <div class="table">
+                <table id="editeurs">
+                    <thead>
+                    <tr>
+                        <th style="width : 50%;">Nom</th>
+                        <th style="width : 50%;">Adresse</th>
+                        <th style="width : 50%;">Supprimer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="editeur : ${editeurs}">
+                            <td th:text="${editeur.nom}"/>
+                            <td th:text="${editeur.adresse}"/>
+                            <td>
+                                <div class="icon-container">
+                                    <a th:href="@{'/delete/'+${editeur.id}}" th:data-confirm-delete="|Etes-vous sur de vouloir supprimer cet éditeur?|"
+                                       onclick="return confirm(this.getAttribute('data-confirm-delete'))">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Editeurs</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/resources/css/main.css}" />
+</head>
+    <body>
+        <div class="form-container">
+            <h1>Créer un éditeur</h1>
+            <form th:object="${editeur}" th:action="@{/editeur/create}" method="get">
+                <div class="input-group">
+                    <label for="firstname">Nom</label>
+                    <input id="firstname" type="text" th:field="*{nom}" />
+                </div>
+                <div class="input-group">
+                    <label for="lastname">Adresse</label>
+                    <input id="lastname" type="text" th:field="*{adresse}" />
+                </div>
+                <button type="submit">Enregistrer</button>
+            </form>
+            <button onclick="window.location='/'" class="back-button">Retour à la liste</button>
+
+        </div>
+    </body>
+</html>
